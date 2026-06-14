@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: small tweaks for SVG strokes if needed */
+svg .stroke-\[3px\] { stroke-width: 3px; }
+
+/* ---- glassmorphism redesign helpers ---- */
+html, body, #root { height: 100%; }
+body { margin: 0; }
+
+/* gently drifting background blobs */
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-26px, 30px) scale(1.08); }
+}
+.animate-floatBlob { animation: floatBlob 16s ease-in-out infinite; }
+
+/* slim translucent scrollbars for glass panels */
+.scroll-glass { scrollbar-width: thin; scrollbar-color: rgba(99,102,241,.45) transparent; }
+.scroll-glass::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-glass::-webkit-scrollbar-thumb { background: rgba(99,102,241,.40); border-radius: 9999px; }
+.scroll-glass::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,.65); }
+.scroll-glass::-webkit-scrollbar-track { background: transparent; }
+
+/* let the SVG canvas receive wheel/drag without page rubber-banding */
+.canvas-svg { touch-action: none; }
